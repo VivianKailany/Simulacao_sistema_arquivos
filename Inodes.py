@@ -100,14 +100,14 @@ class SistemaDeArquivos:
             print(f"Diretório '{nome}' não está vazio.")
             return
         
-        # Se for um arquivo, liberar os blocos de dados
+        # liberar os blocos de dados
         if not inode.pasta:
             for ponteiro in inode.ponteiros:
                 if ponteiro in self.blocos_de_dados:
                     del self.blocos_de_dados[ponteiro]
             inode.ponteiros.clear()  # Limpa a lista de ponteiros após liberar os blocos
         
-        # Remover a entrada do diretório
+        # Remover a entrada da pasta
         del self.pasta_atual.filhos[nome]
         print(f"{'Diretório' if inode.pasta else 'Arquivo'} '{nome}' excluído.")
 
